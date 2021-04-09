@@ -1,16 +1,27 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-const path = require('path')
-const process = require('process')
+const { resolve } = require('path')
+// const process = require('process')
+const NODE_ENV = process.env.NODE_ENV
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
   alias: {
-    '@': path.join(__dirname, 'src')
+    '@': resolve(__dirname, 'src')
   },
-  base: process.env.NODE_ENV === 'production' ? './' : '/',
+  // base: NODE_ENV === 'production' ? './' : '/',
+  // publicDir: './',
+  base: './',
+  build: {
+    assetsDir: './static',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html')
+      }
+    }
+  },
   // mode: 'production',
   server: {
     port: 8080,
