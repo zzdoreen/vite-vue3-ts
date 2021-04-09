@@ -15,12 +15,12 @@
     <div class="contain-box">
       <div class="login-box">
         <div class="title">登录</div>
-        <!-- <el-input class="input-style" placeholder="请输入名称"></el-input> -->
-        <!-- <el-input
+        <el-input class="input-style" placeholder="请输入名称"></el-input>
+        <el-input
           class="input-style"
           placeholder="请输入密码"
           show-password
-        ></el-input> -->
+        ></el-input>
         <router-link to="/home">
           <button class="input-style login-button">登录</button>
         </router-link>
