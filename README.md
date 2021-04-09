@@ -1,4 +1,7 @@
-# demo效果展示(https://zzdoreen.github.io/vite-vue3-ts/dist/index#/login)
+# [demo效果展示](https://zzdoreen.github.io/vite-vue3-ts/dist/index#/login)
+> element-plus 源码好像有问题 打包的时候会报错，需要手动修改 ... 
+
+
 # Vue 3 + Typescript + Vite
 
 This template should help get you started developing with Vue 3 and Typescript in Vite.
