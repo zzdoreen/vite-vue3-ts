@@ -1,10 +1,6 @@
 # [demo效果展示](https://zzdoreen.github.io/vite-vue3-ts/dist/index#/login)
-<<<<<<< HEAD
-> elementPlus 源码有问题 .. 打包的时候会报错 得自己手动修改 ..
-=======
-> element-plus 源码好像有问题 打包的时候会报错，需要手动修改 ... 
->>>>>>> 8ee524d44d7222fd5bf52a7fc986ffafd0b9cdd5
-
+> elementPlus 源码有问题 .. 打包的时候会报错 得自己手动修改 ..  
+> `vue-router`路由配置的时候要选择`hash`模式,打包后才能在`GitHubPage`里面正常显示
 
 # Vue 3 + Typescript + Vite
 
