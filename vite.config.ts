@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 const { resolve } = require('path')
-// const process = require('process')
 const NODE_ENV = process.env.NODE_ENV
 
 // https://vitejs.dev/config/
@@ -26,5 +25,13 @@ export default defineConfig({
   server: {
     port: 8080,
     open: true,
+    /* proxy: {
+      '/api': {
+        target: 'http://rap2api.taobao.org/app/mock/data',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    } */
+
   },
 })
