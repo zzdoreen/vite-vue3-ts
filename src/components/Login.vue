@@ -15,19 +15,31 @@
     <div class="contain-box">
       <div class="login-box">
         <div class="title">登录</div>
-        <el-input class="input-style" placeholder="请输入名称"></el-input>
-        <el-input
-          class="input-style"
-          placeholder="请输入密码"
-          show-password
-        ></el-input>
+        <el-input class="input-style" v-model="username" placeholder="请输入名称"></el-input>
+        <el-input class="input-style" v-model="password" placeholder="请输入密码" show-password></el-input>
         <router-link to="/home">
-          <button class="input-style login-button">登录</button>
+          <button class="input-style login-button" @click="handleLogin">登录</button>
         </router-link>
       </div>
     </div>
   </div>
 </template>
+<script lang="ts">
+import { ref, defineComponent } from 'vue'
+export default defineComponent({
+  setup: () => {
+    let username = ref('')
+    let password = ref('')
+
+    function handleLogin() {
+      sessionStorage.setItem('username', username.value)
+      sessionStorage.setItem('password', password.value)
+      console.log(username.value, password.value)
+    }
+    return { username, password, handleLogin }
+  }
+})
+</script>
 <style lang="scss" >
 $logincolor: rgb(71, 102, 148);
 $treeColor: #40789c;
@@ -200,6 +212,9 @@ $treeColor: #40789c;
           border: 2px solid $logincolor;
           background: white;
           color: $logincolor;
+        }
+        &:active {
+          outline: none;
         }
       }
     }
