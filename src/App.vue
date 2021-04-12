@@ -14,7 +14,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 body {
   margin: 0;
   overflow: hidden;
@@ -27,6 +27,15 @@ body {
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
+}
+a {
+  text-decoration: none;
+  color: white;
+  &:hover,
+  &:visited,
+  &:active {
+    color: white;
+  }
 }
 :root {
   --black: #2a2a33;

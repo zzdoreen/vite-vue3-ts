@@ -5,10 +5,16 @@
     </div>
     <div class="banner">
       <el-row>
-        <el-col :span="4">ColorHunt</el-col>
-        <el-col :span="4">Animation</el-col>
+        <el-col :span="4">
+          <router-link to="/color-hunt">ColorHunt</router-link>
+        </el-col>
+        <el-col :span="4">
+          <router-link to="/animation">Animation</router-link>
+        </el-col>
         <el-col :span="8" class="clear-title-hover"></el-col>
-        <el-col :span="4">Illustration</el-col>
+        <el-col :span="4">
+          <router-link to="/illustration">Illustration</router-link>
+        </el-col>
         <el-col :span="4">Undefined</el-col>
       </el-row>
     </div>
@@ -61,10 +67,10 @@
             fill="#193154"
             stroke="#193154"
           />
-          <use class="lights" href='#light' x='-1000' y='-250'/>
-          <use class="lights" href='#light' x='-1050' y='-250'/>
-          <use class="lights" href='#light' x='-1000' y='-100'/>
-          <use class="lights" href='#light' x='-1050' y='-100'/>
+          <use class="lights" href="#light" x="-1000" y="-250" />
+          <use class="lights" href="#light" x="-1050" y="-250" />
+          <use class="lights" href="#light" x="-1000" y="-100" />
+          <use class="lights" href="#light" x="-1050" y="-100" />
         </g>
         <use href="#tree" x="0" y="550" class="tree-box" />
         <use href="#tree" x="100" y="700" class="tree-box" />
@@ -79,7 +85,7 @@
 import { defineComponent, ref, } from 'vue';
 import SvgStar from './SvgStar.vue'
 export default defineComponent({
-  components: { SvgStar }
+  components: { SvgStar },
 })
 </script>
 <style lang="scss" scoped>
@@ -147,16 +153,16 @@ $deepThemeColor: #183153;
       .building {
         transform: translate(-900px, 0px);
       }
-      .lights{
-        transform: scale(.5);
-        &:nth-of-type(1){
-          transform: scale(.5) translateX(150px);
+      .lights {
+        transform: scale(0.5);
+        &:nth-of-type(1) {
+          transform: scale(0.5) translateX(150px);
         }
-        &:nth-of-type(4){
-          transform: scale(.5) translateX(200px);
+        &:nth-of-type(4) {
+          transform: scale(0.5) translateX(200px);
         }
-        &:nth-of-type(3){
-          transform: scale(.5) translateX(-50px);
+        &:nth-of-type(3) {
+          transform: scale(0.5) translateX(-50px);
         }
       }
     }
