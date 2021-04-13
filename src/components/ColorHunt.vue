@@ -29,62 +29,9 @@ import { defineComponent, reactive, customRef } from 'vue'
 import { getData } from '../api/api'
 export default defineComponent({
     setup: async () => {
-        // let datas: any = await getData('/1531382', { scope: 'response' })
-        // console.log('color', datas.data.data.color)
-        let color = [
-            [
-                "#d9afd9",
-                "#97d9e1"
-            ],
-            [
-                "#13547a",
-                "#80d0c7"
-            ],
-            [
-                "#473B7B",
-                "#3584A7",
-                "#30D2BE"
-            ],
-            [
-                "#CBBACC",
-                "#2580B3"
-            ],
-            [
-                "#B6CEE8",
-                "#F578DC"
-            ],
-            [
-                "#FFE29F",
-                "#FFA99F",
-                "#FF719A"
-            ],
-            [
-                "#798777",
-                "#f8ede3"
-            ],
-            [
-                "#754F44",
-                "#EC7357"
-            ],
-            [
-                "#046582",
-                "#f39189"
-            ],
-            [
-                "#56445D",
-                "#C5E99B"
-            ],
-            [
-                "#6C49B8",
-                "#4FB0C6"
-            ],
-            [
-                "#eb9f9f",
-                "#f1bbba",
-                "#f8ecc9",
-                "#a79c8e"
-            ]
-        ]//reactive(JSON.parse(JSON.stringify(datas.data.data.color)))
+        let datas: any = await getData('/1531382', { scope: 'response' })
+        console.log('color', datas.data.data.color)
+        let color = reactive(JSON.parse(JSON.stringify(datas.data.data.color)))
         return { color }
 
     }

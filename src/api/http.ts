@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://rap2api.taobao.org/app/mock/data'
+axios.defaults.baseURL = '/api'//'http://rap2api.taobao.org/app/mock/data'  不代理
 axios.defaults.timeout = 10000
 
 export function get(url: string, params: any) {

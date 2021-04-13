@@ -23,15 +23,18 @@ export default defineConfig({
   },
   // mode: 'production',
   server: {
+    host: '10.9.37.4',
     port: 8080,
     open: true,
-    /* proxy: {
+    proxy: {
       '/api': {
         target: 'http://rap2api.taobao.org/app/mock/data',
         changeOrigin: true,
+        secure: false,  // https
+        ws: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
-    } */
+    }
 
   },
 })
