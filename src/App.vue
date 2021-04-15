@@ -43,6 +43,7 @@ a {
   --black: #2a2a33;
   --white: #fff;
   --grey: #dedede;
+  --animation: 6s infinite ease;
   //   --primary-color: #{$primary-color};
   //   --primary-color-dark: #{$primary-color-dark};
   //   --primary-color-tint: #{$primary-color-tint};
