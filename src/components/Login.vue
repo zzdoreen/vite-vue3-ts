@@ -15,30 +15,79 @@
     <div class="contain-box">
       <div class="login-box">
         <div class="title">登录</div>
-        <el-input class="input-style" v-model="username" placeholder="请输入名称"></el-input>
-        <el-input class="input-style" v-model="password" placeholder="请输入密码" show-password></el-input>
+        <el-input
+          class="input-style"
+          v-model="username"
+          placeholder="请输入名称"
+        ></el-input>
+        <el-input
+          class="input-style"
+          v-model="password"
+          placeholder="请输入密码"
+          show-password
+        ></el-input>
         <router-link to="/home">
-          <button class="input-style login-button" @click="handleLogin">登录</button>
+          <button class="input-style login-button" @click="handleLogin">
+            登录
+          </button>
         </router-link>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
+import { ref, defineComponent } from "vue";
 export default defineComponent({
   setup: () => {
-    let username = ref('')
-    let password = ref('')
+    let username = ref("");
+    let password = ref("");
 
     function handleLogin() {
-      sessionStorage.setItem('username', username.value)
-      sessionStorage.setItem('password', password.value)
-      console.log(username.value, password.value)
+      sessionStorage.setItem("username", username.value);
+      sessionStorage.setItem("password", password.value);
+      console.log(username.value, password.value);
     }
-    return { username, password, handleLogin }
-  }
-})
+
+    console.log(`
+                           -8                             
+                6886%66 !6$$$61i!! 8833668        
+             8&&$6&%%3%!%%%%i%$i88i6%%$88%8%$     
+           888866%88$8&#866&&&3$i3$i88 $$%%#%%$   
+        .888%3#&&$.$36i!68#!%!i!&!3$1$i  %%$&#%%  
+       8&8&66&    11i!&#&#&&!ii36#!3u36   %8%&&%$8
+     $%&&&68    8%3&$8$1$$$8$$$i3i$!3u%    %&z&&&$
+  .8%8%66%     1u!&8$83*!!!-3-6&&&!3$13    8&8%&&#
+ 3&66!666        %6$u#!o;va!6&#8$6&33!u     && 8&%
+8386 633       !$8%8n;^a----.+o-%%&3i3      6$ 8$#
+ 3! 6!!       i.&6 ^ *-.......-;!!v3  +     66 ^86
+11  ii6   !   u6 8 6  - .;.... ii6ii  i     38  8$
+ u  11    u    6  .~  ...    oai# u  ~~     6$  88
+z   uu   .~    8     .oo +^8&8!%            6   86
+a   *z    .    &u83nz. o; ^^#&&&i~         36   $%
+a    o        i6i31!a  z. z*v!+---8----.+  6    %6
+      +       i!6$%%&%3-+v^i+---%-------- 6     3!
+              36&8%&$%&i8-.----o...-....6       3 
+              6%$&&##&#&^33!33!u..+.            i 
+             *8%#&&&&$&$$$$$&&$&%oi     .      z  
+            ~6$%&&6#&&#&&&&&&33!3v            **  
+           .83$%@!!%$##$6i$$$i!!@+           .-   
+          +i&%%#%!6&!$$633&$$i33%           n     
+     z - 3&1$&&n6i%$&&6#66#&8666                  
+   i~z 6&1%$#&n63#66&!366!%&!36%....             i
+    +;8.ui3$$$z !ii6!#%i$$&%!!6....z            i 
+    *..#!3%$$$&&$$#$&&#&&&$%&$%z-.n              i
+     ~~113%%$$&&&#&$$#&$$$#&&$$&#o           . u11
+       nii%$&&#%%&&%&$8&&&#8#&&#$6!       .  uuu  
+         ui&&#%&.#&6#&8&8##88!6###.      ^aa.     
+         uu6!1i33!!$86&##666%!!i!!!i             a
+          aai%3#&#!36!$3&#&!!6!3!!i&&!          + 
+          %%%6!!!!!3383!366$$!$&&&&##&&$          
+        %au1i!!!!!!3#@&366666&3!!!##&&&$$%3       
+      ^%##&!ii!3&@@#$@66##3!!!!!!&@##$$&$%6!1u    
+        `);
+    return { username, password, handleLogin };
+  },
+});
 </script>
 <style lang="scss" >
 $logincolor: rgb(71, 102, 148);
