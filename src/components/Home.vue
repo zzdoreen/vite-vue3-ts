@@ -13,13 +13,24 @@
         </el-col>
         <el-col :span="8" class="clear-title-hover"></el-col>
         <el-col :span="4">
-          <router-link to="/illustration">Illustration</router-link>
+          <router-link to="/illustration" @click="() => console.log('d')"
+            >Illustration</router-link
+          >
         </el-col>
-        <el-col :span="4">Undefined</el-col>
+        <el-col :span="4">
+          <router-link to="/undefined" @click="() => console.log('d')"
+            >Undefined</router-link
+          >
+        </el-col>
       </el-row>
     </div>
     <div class="pic">
-      <svg width="100vw" height="300px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="100vw"
+        height="300px"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <defs>
           <g id="tree">
             <path
@@ -82,11 +93,11 @@
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref, } from 'vue';
-import SvgStar from './SvgStar.vue'
+import { defineComponent, ref } from "vue";
+import SvgStar from "./SvgStar.vue";
 export default defineComponent({
   components: { SvgStar },
-})
+});
 </script>
 <style lang="scss" scoped>
 $themeColor: #515e7b;

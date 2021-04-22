@@ -37,6 +37,17 @@ const Router = createRouter({
             name: 'illustration',
             component: () => import('@/components/Illustration.vue')
         },
+        {
+            path: '/undefined',
+            name: 'undefined',
+            component: () => import('@/components/Undefined.vue'),
+            children: [
+                {
+                    path: 'null',
+                    component: () => import('@/components/Home.vue')
+                }
+            ]
+        },
     ]
 })
 
