@@ -9,7 +9,11 @@
         {{ music.value.artistsname }}:{{ music.value.name }}
       </h1>
       <div class="container">
-        <img :src="music.value.picurl" class="pic" alt="" srcset="" />
+        <div
+          class="pic"
+          :style="`background-image:url(${music.value.picurl})`"
+        ></div>
+        <!-- <img :src="music.value.picurl" class="pic" alt="" srcset="" /> -->
       </div>
       <audio
         class="audio"
@@ -102,6 +106,7 @@ export default defineComponent({
         border-radius: 50%;
         border: 15px solid #1f1e1d;
         box-sizing: border-box;
+        background-size: cover;
       }
 
       &:before {
