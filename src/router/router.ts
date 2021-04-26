@@ -37,6 +37,11 @@ const Router = createRouter({
             name: 'illustration',
             component: () => import('@/components/Illustration.vue')
         },
+        {
+            path: '/music',
+            name: 'music',
+            component: () => import('@/components/Music.vue')
+        },
     ]
 })
 
