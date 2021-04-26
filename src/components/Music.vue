@@ -11,7 +11,9 @@
       <div class="container">
         <div
           class="pic"
-          :style="`background-image:url(${music.value.picurl})`"
+          :style="`background-image:url(&quot;https:${
+            music.value.picurl.split(':')[1]
+          }`"
         ></div>
         <!-- <img :src="music.value.picurl" class="pic" alt="" srcset="" /> -->
       </div>
@@ -27,7 +29,7 @@
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref, reactive, onMounted, onBeforeUpdate } from "vue";
+import { defineComponent, ref, reactive, onMounted } from "vue";
 import { getData } from "../api/api";
 export default defineComponent({
   setup: async () => {
@@ -38,7 +40,6 @@ export default defineComponent({
     let datas: any = await getData(2, "", {});
     let music = reactive({ value: datas.data.data });
 
-    // console.log("audoi", audio.value);
     function handleChangeMusic() {
       getData(2, "", {}).then((res: any) => {
         music.value = res.data.data;
