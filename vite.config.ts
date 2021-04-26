@@ -33,7 +33,12 @@ export default defineConfig({
         secure: false,  // https
         ws: true,
         rewrite: (path) => path.replace(/^\/api/, '')
-      }
+      },
+      '/music-api': {
+        target: 'https://api.uomg.com/api/rand.music?format=json&sort=%E7%83%AD%E6%AD%8C%E6%A6%9C',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/music-api/, '')
+      },
     }
 
   },
