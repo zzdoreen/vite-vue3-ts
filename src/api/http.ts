@@ -4,7 +4,6 @@ import axios from 'axios'
 axios.defaults.timeout = 10000
 
 export function get(type: number, url: string, params: any) {
-    // axios.defaults.baseT1URL = ''
     if (type === 1) {
         url = '/api' + url
         console.log('1', url)
@@ -21,8 +20,4 @@ export function get(type: number, url: string, params: any) {
             reject(err)
         })
     })
-}
-
-export function musicGet() {
-
 }

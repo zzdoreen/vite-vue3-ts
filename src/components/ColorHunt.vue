@@ -30,7 +30,6 @@ import { getData } from "../api/api";
 export default defineComponent({
   setup: async () => {
     let datas: any = await getData(1, "/1531382", { scope: "response" });
-    // console.log('color', datas.data.data.color)
     let color = reactive(JSON.parse(JSON.stringify(datas.data.data.color)));
     return { color };
   },
