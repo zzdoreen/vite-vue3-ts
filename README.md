@@ -1,4 +1,4 @@
-# [demo效果展示](https://zzdoreen.github.io/vite-vue3-ts/dist/index#/login)
+# [效果展示](https://zzdoreen.github.io/vite-vue3-ts/dist/index#/login)
 > elementPlus 源码有问题 .. 打包的时候会报错 得自己手动修改 ..  
 > `vue-router`路由配置的时候要选择`hash`模式,打包后才能在`GitHubPage`里面正常显示
 
