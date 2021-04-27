@@ -25,23 +25,23 @@ export default defineConfig({
   server: {
     port: 8080,
     open: true,
-    proxy: {
-      '/api': {
-        target: 'http://rap2api.taobao.org/app/mock/data',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      },
-      '/music-api': {
-        target: 'https://api.uomg.com/api/rand.music?format=json&sort=%E7%83%AD%E6%AD%8C%E6%A6%9C',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/music-api/, '')
-      },
-      '/music-lyric': {
-        // target:'https://api.imjad.cn/cloudmusic/?type=lyric&id=1479526505'
-        target: 'https://api.imjad.cn/cloudmusic/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/music-lyric/, '')
-      }
-    },
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://rap2api.taobao.org/app/mock/data',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/api/, '')
+    //   },
+    //   '/music-api': {
+    //     target: 'https://api.uomg.com/api/rand.music?format=json&sort=%E7%83%AD%E6%AD%8C%E6%A6%9C',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/music-api/, '')
+    //   },
+    //   '/music-lyric': {
+    //     // target:'https://api.imjad.cn/cloudmusic/?type=lyric&id=1479526505'
+    //     target: 'https://api.imjad.cn/cloudmusic/',
+    //     changeOrigin: true,
+    //     rewrite: (path) => path.replace(/^\/music-lyric/, '')
+    //   }
+    // },
   },
 })
