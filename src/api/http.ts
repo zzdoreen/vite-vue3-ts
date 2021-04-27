@@ -4,12 +4,12 @@ import axios from 'axios'
 axios.defaults.timeout = 10000
 
 export function get(type: number, url: string, params: any) {
-    if (type === 1) {
-        url = '/api' + url
-    } else {
-        url = 'https://api.uomg.com/api/rand.music?format=json&sort=%E7%83%AD%E6%AD%8C%E6%A6%9C'
-        // url = '/music-api' + url
+    switch (type) {
+        case 1: url = '/api' + url; break;
+        case 2: url = '/music-api' + url; break;
+        case 3: url = '/music-lyric' + url; break
     }
+
     return new Promise((resolve, reject) => {
         axios.get(url, {
             params: params
