@@ -9,7 +9,12 @@
         {{ music.value.artistsname }}:{{ music.value.name }}
       </h1>
       <div class="container">
-        <img :src="music.value.picurl" class="pic" alt="" srcset="" />
+        <div
+          class="pic"
+          :style="`background-image:url(&quot;https:${
+            music.value.picurl.split(':')[1]
+          }`"
+        ></div>
       </div>
       <audio
         class="audio"
