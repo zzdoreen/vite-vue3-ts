@@ -68,6 +68,9 @@ export default defineComponent({
         index.value++;
       }
       msg.value = obj[index.value].text;
+      if (audio.value.ended) {
+        handleChangeMusic();
+      }
     }
 
     function handleMusicPlay() {
@@ -123,7 +126,8 @@ export default defineComponent({
     position: absolute;
     background: white;
     filter: blur(20px);
-    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
   .content {
     padding-top: 20px;
@@ -170,6 +174,7 @@ export default defineComponent({
         border-radius: 50%;
         border: 15px solid #1f1e1d;
         box-sizing: border-box;
+        background-size: contain;
       }
 
       &:before {

@@ -1,6 +1,11 @@
 <template>
   <suspense>
-    <router-view></router-view>
+    <template #default>
+      <router-view></router-view>
+    </template>
+    <template #fallback>
+      <h1>hello world</h1>
+    </template>
   </suspense>
 </template>
 
