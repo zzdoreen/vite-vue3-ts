@@ -39,6 +39,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/music-api/, '')
       },
+      '/music-lyric': {
+        // target:'https://api.imjad.cn/cloudmusic/?type=lyric&id=1479526505'
+        target: 'https://api.imjad.cn/cloudmusic/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/music-lyric/, '')
+      }
     }
 
   },

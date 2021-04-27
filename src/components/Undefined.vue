@@ -14,33 +14,87 @@
       <audio
         class="audio"
         ref="audio"
-        :autoplay='true'
-        controls
+        :autoplay="true"
+        @pause="handlePause"
+        @play="handlePlay"
+        @timeupdate="handleMusicTimeChange"
         :src="music.value.url"
       ></audio>
-      <el-button class="btn" @click="handleChangeMusic">切换</el-button>
+      <div class="icon">
+        <i
+          :class="[
+            isMusicPlay ? 'el-icon-video-play' : 'el-icon-video-pause',
+            '',
+          ]"
+          @click="handleMusicPlay"
+        ></i>
+
+        <i class="el-icon-refresh" @click="handleChangeMusic"></i>
+      </div>
+
+      <br />
+
+      <p class="lyric">{{ msg }}</p>
     </div>
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref, reactive, onMounted, onBeforeUpdate } from "vue";
-import { getData } from "../api/api";
+import { defineComponent, ref, onMounted } from "vue";
+import { useMusic } from "../hooks/useMusic";
+
 export default defineComponent({
   setup: async () => {
-    let audio = ref(null);
-    onMounted(() => {
-      console.log("audoi", audio);
-    });
-    let datas: any = await getData(2, "", {});
-    let music = reactive({ value: datas.data.data });
+    onMounted(() => {});
 
-    // console.log("audoi", audio.value);
-    function handleChangeMusic() {
-      getData(2, "", {}).then((res: any) => {
-        music.value = res.data.data;
-      });
+    let {
+      handleChangeMusic,
+      index,
+      obj,
+      music,
+      music_lyric,
+    } = await useMusic();
+
+    let audio = ref();
+    let isMusicPlay = ref(false);
+    let msg = ref(obj[0].text);
+
+    function handleMusicTimeChange() {
+      if (audio.value.currentTime >= obj[index.value + 1].time) {
+        index.value++;
+      }
+      msg.value = obj[index.value].text;
     }
-    return { audio, music, handleChangeMusic };
+
+    function handleMusicPlay() {
+      if (audio.value.paused) {
+        audio.value.play();
+      } else {
+        audio.value.pause();
+      }
+    }
+
+    function handlePause() {
+      isMusicPlay.value = true;
+    }
+
+    function handlePlay() {
+      isMusicPlay.value = false;
+    }
+
+    return {
+      msg,
+      isMusicPlay,
+      index,
+      obj,
+      audio,
+      music,
+      music_lyric,
+      handlePlay,
+      handlePause,
+      handleMusicPlay,
+      handleMusicTimeChange,
+      handleChangeMusic,
+    };
   },
 });
 </script>
@@ -73,6 +127,15 @@ export default defineComponent({
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    .icon {
+      font-size: 50px;
+      color: #333;
+      z-index: 99;
+      cursor: pointer;
+      letter-spacing: 50px;
+      margin-left: 50px;
+    }
 
     .container {
       width: 250px;
@@ -107,8 +170,8 @@ export default defineComponent({
       &:before {
         @include ab_in_center;
         content: "";
-        width: 15px;
-        height: 15px;
+        width: 30px;
+        height: 30px;
         background: white;
         z-index: 99;
         border-radius: 50%;
@@ -126,8 +189,9 @@ export default defineComponent({
     .audio {
       margin: 20px 0;
     }
-    .el-button {
+    .lyric {
       z-index: 99;
+      color: #333;
     }
   }
 }

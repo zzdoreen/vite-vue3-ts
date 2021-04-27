@@ -41,12 +41,6 @@ const Router = createRouter({
             path: '/undefined',
             name: 'undefined',
             component: () => import('@/components/Undefined.vue'),
-            children: [
-                {
-                    path: 'null',
-                    component: () => import('@/components/Home.vue')
-                }
-            ]
         },
     ]
 })

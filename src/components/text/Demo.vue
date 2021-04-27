@@ -19,7 +19,7 @@ import { getData } from "../../api/api";
 export default defineComponent({
   setup: async () => {
     let color: any = reactive({ data: [] });
-    let datas: any = await getData("/1531382", { scope: "response" });
+    let datas: any = await getData(1,"/1531382", { scope: "response" });
     // console.log("color", datas.data.data.color);
     color.data = JSON.parse(JSON.stringify(datas.data.data.color));
     function handleChange() {

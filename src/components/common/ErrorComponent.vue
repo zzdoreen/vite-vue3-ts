@@ -18,12 +18,11 @@ export default {
     },
     age: Number,
   },
-  setup: (props, context) => {
+  setup: (props: any, context: any) => {
     // console.log("props", props.name, props.age);
     let handleEmit = () => {
-      console.log('h',context.slots,context.attrs)
+      console.log("h", context.slots, context.attrs);
       context.emit("~", "hello");
-      
     };
     return { handleEmit };
   },
