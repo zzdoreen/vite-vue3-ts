@@ -1,15 +1,17 @@
 <template>
   <div class="bg">
     <div
+      v-loading="!music.value.picurl.length"
       class="bg-img"
       :style="`background-image:url(${music.value.picurl})`"
     ></div>
     <div class="content">
       <h1 class="title">
-        {{ music.value.artistsname }}:{{ music.value.name }}
+        {{ music.value.artistsname }} : {{ music.value.name }}
       </h1>
       <div class="container">
         <div
+          v-loading="!music.value.picurl.length"
           class="pic"
           :style="`background-image:url(&quot;https:${
             music.value.picurl.split(':')[1]
@@ -17,6 +19,7 @@
         ></div>
       </div>
       <audio
+        v-loading="!music.value.picurl.length"
         class="audio"
         ref="audio"
         :autoplay="true"
@@ -117,17 +120,15 @@ export default defineComponent({
 .bg {
   width: 100vw;
   height: 100vh;
-  background: #2c3e50;
+  background: black;
   .bg-img {
     width: 110vw;
     left: -5vw;
     top: -5vh;
     height: 110vh;
     position: absolute;
-    background: white;
-    filter: blur(20px);
+    filter: blur(50px);
     background-size: 100% 100%;
-    background-repeat: no-repeat;
   }
   .content {
     padding-top: 20px;
@@ -194,11 +195,8 @@ export default defineComponent({
       z-index: 99;
       font-size: 14px;
       font-weight: 100;
-      letter-spacing: 5px;
     }
-    .audio {
-      margin: 20px 0;
-    }
+    
     .lyric {
       z-index: 99;
       color: #333;
