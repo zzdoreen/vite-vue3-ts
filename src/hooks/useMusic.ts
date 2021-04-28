@@ -19,11 +19,12 @@ export async function useMusic() {
         obj.push({ text: value, time: key })
     });
 
-    let music_lyric = reactive({ lyric: obj });
+    // let music_lyric = reactive({ lyric: obj });
     let index = ref(0)
 
     function handleChangeMusic() {
         index.value = 0
+        obj = []
         getData(2, "", {}).then((res: any) => {
             music.value = res.data.data;
             music_id.value = music.value.url.split("?id=")[1];
@@ -39,12 +40,12 @@ export async function useMusic() {
                     let value = element.split(']')[1]
                     obj.push({ text: value, time: key })
                 });
-                music_lyric.lyric = obj
+                // music_lyric.lyric = obj
                 // lyricData = obj
                 console.log(obj)
             });
         });
     }
 
-    return { handleChangeMusic, index, obj, music, music_lyric }
+    return { handleChangeMusic, index, obj, music }
 }

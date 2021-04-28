@@ -59,7 +59,7 @@ export default defineComponent({
       index,
       obj,
       music,
-      music_lyric,
+      // music_lyric,
     } = await useMusic();
 
     let audio = ref();
@@ -99,7 +99,7 @@ export default defineComponent({
       obj,
       audio,
       music,
-      music_lyric,
+      // music_lyric,
       handlePlay,
       handlePause,
       handleMusicPlay,
