@@ -6,9 +6,6 @@
       :style="`background-image:url(${music.value.picurl})`"
     ></div>
     <div class="content">
-      <h1 class="title">
-        {{ music.value.artistsname }} : {{ music.value.name }}
-      </h1>
       <div class="container">
         <div
           v-loading="!music.value.picurl.length"
@@ -28,6 +25,11 @@
         @timeupdate="handleMusicTimeChange"
         :src="music.value.url"
       ></audio>
+      <div class="title">
+        <p>{{ music.value.name }}</p>
+        <p>歌手：{{ music.value.artistsname }}</p>
+      </div>
+      <p class="lyric">{{ msg ? msg : " " }}</p>
       <div class="icon">
         <i
           :class="[
@@ -41,8 +43,6 @@
       </div>
 
       <br />
-
-      <p class="lyric">{{ msg }}</p>
     </div>
   </div>
 </template>
@@ -64,13 +64,13 @@ export default defineComponent({
 
     let audio = ref();
     let isMusicPlay = ref(false);
-    let msg = ref(obj[0].text);
+    let msg = obj.data && obj.data[0].text ? ref(obj.data[0].text) : ref(" ");
 
     function handleMusicTimeChange() {
-      if (audio.value.currentTime >= obj[index.value + 1].time) {
+      if (audio.value.currentTime >= obj.data[index.value + 1].time) {
         index.value++;
       }
-      msg.value = obj[index.value].text;
+      msg.value = obj.data[index.value].text;
       if (audio.value.ended) {
         handleChangeMusic();
       }
@@ -99,7 +99,6 @@ export default defineComponent({
       obj,
       audio,
       music,
-      // music_lyric,
       handlePlay,
       handlePause,
       handleMusicPlay,
@@ -121,18 +120,38 @@ export default defineComponent({
   width: 100vw;
   height: 100vh;
   background: black;
+  display: flex;
+  justify-content: center;
   .bg-img {
     width: 110vw;
     left: -5vw;
     top: -5vh;
     height: 110vh;
     position: absolute;
-    filter: blur(50px);
+    filter: blur(20px);
+    background: #000;
     background-size: 100% 100%;
+    &::before {
+      content: "";
+      display: inline-block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 98;
+      background-color: black;
+      opacity: 0.7;
+    }
   }
   .content {
+    margin-top: 20px;
+    z-index: 99;
+    width: 300px;
+    height: 500px;
+    // border: 5px solid #ccc;
     padding-top: 20px;
-    height: 100%;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -140,11 +159,13 @@ export default defineComponent({
 
     .icon {
       font-size: 50px;
-      color: #333;
+      color: rgb(214, 213, 213);
       z-index: 99;
       cursor: pointer;
       letter-spacing: 50px;
       margin-left: 50px;
+      position: absolute;
+      top: 450px;
     }
 
     .container {
@@ -181,9 +202,9 @@ export default defineComponent({
       &:before {
         @include ab_in_center;
         content: "";
-        width: 30px;
-        height: 30px;
-        background: white;
+        width: 15px;
+        height: 15px;
+        background: rgb(214, 213, 213);
         z-index: 99;
         border-radius: 50%;
         box-shadow: 0px 0px 3px #333 inset;
@@ -191,15 +212,18 @@ export default defineComponent({
     }
 
     .title {
-      color: white;
+      color: rgb(214, 213, 213);
       z-index: 99;
-      font-size: 14px;
-      font-weight: 100;
+      margin-top: -20px;
+      :nth-child(2) {
+        font-size: 12px;
+      }
     }
-    
+
     .lyric {
       z-index: 99;
-      color: #333;
+      color: rgb(214, 213, 213);
+      font-size: 12px;
     }
   }
 }

@@ -12,11 +12,11 @@ export async function useMusic() {
         id: music_id.value,
     });
     let arr = lyric.data.lrc.lyric.split('\n')
-    let obj: any = []
+    let obj: any = reactive({ data: [] })
     arr.forEach((element: string) => {
         let key = toSeconds(element.split(']')[0].slice(1))
         let value = element.split(']')[1]
-        obj.push({ text: value, time: key })
+        obj.data.push({ text: value, time: key })
     });
 
     // let music_lyric = reactive({ lyric: obj });
@@ -24,7 +24,7 @@ export async function useMusic() {
 
     function handleChangeMusic() {
         index.value = 0
-        obj = []
+        obj.data = []
         getData(2, "", {}).then((res: any) => {
             music.value = res.data.data;
             music_id.value = music.value.url.split("?id=")[1];
@@ -34,15 +34,15 @@ export async function useMusic() {
                 id: music_id.value,
             }).then((lrc: any) => {
                 arr = lrc.data.lrc.lyric.split('\n');
-                obj = []
+                // obj.data = []
                 arr.forEach((element: string) => {
                     let key = toSeconds(element.split(']')[0].slice(1))
                     let value = element.split(']')[1]
-                    obj.push({ text: value, time: key })
+                    obj.data.push({ text: value, time: key })
                 });
                 // music_lyric.lyric = obj
                 // lyricData = obj
-                console.log(obj)
+                // console.log(obj)
             });
         });
     }
