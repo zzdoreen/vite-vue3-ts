@@ -54,13 +54,7 @@ export default defineComponent({
   setup: async () => {
     onMounted(() => {});
 
-    let {
-      handleChangeMusic,
-      index,
-      obj,
-      music,
-      // music_lyric,
-    } = await useMusic();
+    let { handleChangeMusic, index, obj, music } = await useMusic();
 
     let audio = ref();
     let isMusicPlay = ref(false);
