@@ -7,4 +7,5 @@ import 'element-plus/lib/theme-chalk/index.css'
 createApp(App)
     .use(router)
     .use(ElementPlus)
+    .provide('this', this)
     .mount('#app')

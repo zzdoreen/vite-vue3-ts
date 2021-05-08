@@ -9,12 +9,19 @@
           <router-link to="/color-hunt">ColorHunt</router-link>
         </el-col>
         <el-col :span="4">
-          <router-link to="/animation">Animation</router-link>
+          <router-link to="/papercss">Papercss</router-link>
         </el-col>
         <el-col :span="8" class="clear-title-hover"></el-col>
         <el-col :span="4">
-          <router-link to="/illustration">Illustration</router-link>
+          <router-link to="/illustration" @click="() => console.log('d')"
+            >Illustration</router-link
+          >
         </el-col>
+        <!-- <el-col :span="4">
+          <router-link to="/undefined" @click="() => console.log('d')"
+            >Undefined</router-link
+          >
+        </el-col> -->
         <el-col :span="4">
           <router-link to="/music">Music</router-link>
         </el-col>

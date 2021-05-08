@@ -11,13 +11,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Login from "./components/Login.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    Login,
-  },
 });
 </script>
 
@@ -34,6 +30,7 @@ body {
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
+  font-size: 15px;
 }
 a {
   text-decoration: none;

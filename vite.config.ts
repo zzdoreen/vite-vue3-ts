@@ -23,7 +23,8 @@ export default defineConfig({
   },
   // mode: 'production',
   server: {
-    port: 8080,
+    // host: '10.9.37.4',
+    // port: 8080,
     open: true,
     // proxy: {
     //   '/api': {

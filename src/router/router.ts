@@ -12,10 +12,10 @@ const Router = createRouter({
             name: 'login',
             component: () => import('@/components/Login.vue')
         },
-        {
-            path: '/index',
-            component: () => import('@/components/HelloWorld.vue')
-        },
+        // {
+        //     path: '/index',
+        //     component: () => import('@/components/HelloWorld.vue')
+        // },
 
         {
             path: '/home',
@@ -28,9 +28,20 @@ const Router = createRouter({
             component: () => import('@/components/ColorHunt.vue')
         },
         {
-            path: '/animation',
-            name: 'animation',
-            component: () => import('@/components/Animation.vue')
+            path: '/papercss',
+            name: 'papercss',
+            redirect: '/papercss/test', // 带子路由的话必填
+            component: () => import('@/components/Papercss.vue'),
+            children: [
+                {
+                    path: 'test',
+                    component: () => import('@/components/Papercss/Indexs.vue')
+                },
+                {
+                    path: 'test-1',
+                    component: () => import('@/components/Papercss/Index.vue')
+                },
+            ]
         },
         {
             path: '/illustration',
