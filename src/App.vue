@@ -25,6 +25,7 @@ body {
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
+  font-size: 15px;
 }
 a {
   text-decoration: none;
