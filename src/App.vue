@@ -1,7 +1,7 @@
 <template>
   <suspense>
     <template #default>
-      <router-view></router-view>
+      <router-view @refresh="handleRefresh"></router-view>
     </template>
     <template #fallback>
       <h1>hello world</h1>
@@ -14,6 +14,14 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
+  methods: {
+    handleRefresh() {
+      console.log("refresh");
+      setTimeout(() => {
+        location.reload();
+      }, 10);
+    },
+  },
 });
 </script>
 

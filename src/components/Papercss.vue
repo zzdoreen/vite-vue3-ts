@@ -14,6 +14,12 @@
         <div class="collapsible-body">
           <ul class="inline">
             <li>
+              <router-link to="/home" @click="handleRouterChange"
+                >Home</router-link
+              >
+              <!-- <a href="javascript:;" @click="handleRouterChange">home</a> -->
+            </li>
+            <li>
               <router-link to="test-1">nav1</router-link>
             </li>
             <li><router-link to="test">nav2</router-link></li>
@@ -28,7 +34,9 @@
   </div>
 </template>
 <script lang='ts'>
+import { emit } from "node:cluster";
 import { defineComponent, ref, onMounted } from "vue";
+import router from "../router/router";
 import Index from "./Papercss/Index.vue";
 
 export default defineComponent({
@@ -37,7 +45,14 @@ export default defineComponent({
   },
   setup: async () => {
     onMounted(() => {});
+
     return {};
+  },
+  methods: {
+    handleRouterChange() {
+      console.log("click");
+      this.$emit("refresh");
+    },
   },
 });
 </script>
