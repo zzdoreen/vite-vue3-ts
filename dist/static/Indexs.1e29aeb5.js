@@ -1,1 +1,0 @@
-/* empty css                  */import{d as e,j as a,o as n,c as r,a as s}from"./vendor.5044e5b6.js";var t=e({setup:async()=>(a((()=>{})),{})});const o=s("h2",null,"change test",-1);t.render=function(e,a,s,t,p,u){return n(),r("div",null,[o])};export default t;
