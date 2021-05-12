@@ -16,43 +16,28 @@
         <div class="collapsible-body">
           <ul class="inline">
             <li>
-              <router-link to="/home" @click="handleRouterChange"
-                >Home</router-link
-              >
-              <!-- <a href="javascript:;" @click="handleRouterChange">home</a> -->
+              <router-link to="/home">Home</router-link>
             </li>
             <li>
-              <router-link to="test-1">test</router-link>
+              <router-link to="diary">Diary</router-link>
             </li>
-            <li><router-link to="article">article</router-link></li>
-            <!-- <li><a href="#" @click.prevent>Github</a></li> -->
+            <!-- <li><router-link to="article">article</router-link></li> -->
+            <li><router-link to="one">ONE一个</router-link></li>
           </ul>
         </div>
       </div>
     </nav>
     <br />
-    <!-- <hr /> -->
     <router-view />
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, ref, onMounted } from "vue";
-import Index from "./Papercss/Index.vue";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
-  components: {
-    Index,
-  },
   setup: async () => {
     onMounted(() => {});
-
     return {};
-  },
-  methods: {
-    handleRouterChange() {
-      console.log("click");
-      this.$emit("refresh");
-    },
   },
 });
 </script>

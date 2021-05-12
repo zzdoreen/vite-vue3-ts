@@ -39,9 +39,14 @@ const Router = createRouter({
                     component: () => import('@/components/Papercss/Article.vue')
                 },
                 {
-                    path: 'test-1',
-                    name: 'test-1',
-                    component: () => import('@/components/Papercss/Index.vue')
+                    path: 'diary',
+                    name: 'diary',
+                    component: () => import('@/components/Papercss/Diary.vue')
+                },
+                {
+                    path: 'one',
+                    name: 'one',
+                    component: () => import('@/components/Papercss/One.vue')
                 },
             ]
         },

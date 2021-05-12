@@ -1,7 +1,7 @@
 <template>
   <suspense>
     <template #default>
-      <router-view @refresh="handleRefresh"></router-view>
+      <router-view></router-view>
     </template>
     <template #fallback>
       <h1>hello world</h1>
@@ -10,10 +10,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, watch } from "vue";
+import { useRoute } from "vue-router";
 
 export default defineComponent({
   name: "App",
+  setup: () => {
+    const route = useRoute();
+    watch(
+      () => route.path,
+      (to, from) => {
+        if (from.includes("papercss") && from !== to) {
+          location.reload();
+        }
+      }
+    );
+  },
   methods: {
     handleRefresh() {
       console.log("refresh");
