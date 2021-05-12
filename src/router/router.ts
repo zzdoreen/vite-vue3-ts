@@ -30,7 +30,7 @@ const Router = createRouter({
         {
             path: '/papercss',
             name: 'papercss',
-            redirect: '/papercss/article', // 带子路由的话必填
+            redirect: '/papercss/diary', // 带子路由的话必填
             component: () => import('@/components/Papercss.vue'),
             children: [
                 {

@@ -27,7 +27,7 @@ export default defineConfig({
     // port: 8080,
     open: true,
     proxy: {
-      '/api': {
+      /* '/api': {
         target: 'http://rap2api.taobao.org/app/mock/data',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
@@ -52,7 +52,7 @@ export default defineConfig({
         target: 'http://api.tianapi.com/txapi/tiangou/index?key=7764228bedff0b2310879d47173c4603',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/diary-api/, '')
-      },
+      }, */
 
     },
   },
