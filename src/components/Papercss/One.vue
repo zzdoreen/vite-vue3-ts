@@ -47,7 +47,7 @@ export default defineComponent({
 .card {
   margin-top: 70px;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -10rem;
   text-align: center;
 }
 </style>
