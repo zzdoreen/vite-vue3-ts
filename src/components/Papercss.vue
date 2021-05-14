@@ -21,23 +21,46 @@
             <li>
               <router-link to="diary">Diary</router-link>
             </li>
-            <!-- <li><router-link to="article">article</router-link></li> -->
-            <li><router-link to="one">ONE一个</router-link></li>
+            <li>
+              <router-link to="one">ONE一个</router-link>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
     <br />
-    <router-view />
+    <router-view
+      v-loading="!flag"
+      :diray="diary"
+      :one="oneInfo"
+      :date="date"
+      @handle-next="nextPage"
+    />
   </div>
 </template>
 <script lang='ts'>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, inject, onMounted, ref, watch } from "vue";
+import { useDiary } from "../hooks/useDiary";
+import { useOne } from "../hooks/useOne";
 
 export default defineComponent({
   setup: async () => {
     onMounted(() => {});
-    return {};
+
+    let { diary, date, handleNext } = await useDiary();
+    let { oneInfo, handleNextOne } = await useOne();
+    let flag = diary.content || oneInfo.newsList;
+    function nextPage(type: string) {
+      return type === "one" ? handleNextOne() : handleNext();
+    }
+
+    return {
+      flag,
+      oneInfo,
+      diary,
+      date,
+      nextPage,
+    };
   },
 });
 </script>

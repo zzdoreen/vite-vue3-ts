@@ -5,7 +5,7 @@
         <h4 class="card-title">舔狗日记</h4>
         <h5 class="card-subtitle">{{ date }}</h5>
         <p class="card-text">
-          {{ diary.content }}
+          {{ diray.content }}
         </p>
         <button class="card-link" @click="handleNext">next diary !</button>
       </div>
@@ -15,27 +15,28 @@
 <script lang='ts'>
 import "papercss/dist/paper.css";
 import "papercss/dist/paper.min.css";
-import { defineComponent, ref, onMounted, reactive } from "vue";
-import { getData } from "../../api/api";
-import EasyDate from "../../utils/EasyDate";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
-  setup: async () => {
+  emits: ["handle-next"],
+  props: {
+    diray: {
+      type: Object,
+      required: true,
+    },
+    date: {
+      type: String,
+      required: true,
+    },
+  },
+  setup: (props, context) => {
     onMounted(() => {});
-    let data: any = await getData(5, "", {});
-    let diary = reactive(data.data.newslist[0]);
-    let date: any = ref(new EasyDate().format("yyyy-MM-dd"));
-    let index = 0;
+    // console.log("diray----", props.diray, props.date);
     function handleNext() {
-      getData(5, "", {}).then((res: any) => {
-        diary.content = res.data.newslist[0].content;
-        date.value = new EasyDate(new EasyDate().intervalNDay(--index)).format(
-          "yyyy-MM-dd"
-        );
-      });
+      context.emit("handle-next",'diray');
     }
 
-    return { diary, date, handleNext };
+    return { handleNext };
   },
 });
 </script>

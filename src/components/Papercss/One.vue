@@ -1,21 +1,17 @@
 <template>
   <div class="contain">
     <div class="card" style="width: 20rem">
-      <img
-        ref="image"
-        :src="oneInfo.newsList.imgurl"
-        alt="Card example image"
-      />
+      <img ref="image" :src="one.newsList.imgurl" alt="Card example image" />
 
       <div class="card-body">
         <h4 class="card-title">
-          {{ oneInfo.newsList.wordfrom ? oneInfo.newsList.wordfrom : "--" }}
+          {{ one.newsList.wordfrom ? one.newsList.wordfrom : "--" }}
         </h4>
         <h5 class="card-subtitle">
-          {{ oneInfo.newsList.imgauthor + " " + oneInfo.newsList.date }}
+          {{ one.newsList.imgauthor + " " + one.newsList.date }}
         </h5>
         <p class="card-text">
-          {{ oneInfo.newsList.word }}
+          {{ one.newsList.word }}
         </p>
         <button @click="handleNextOne">next one !</button>
       </div>
@@ -25,21 +21,23 @@
 <script lang='ts'>
 import "papercss/dist/paper.css";
 import "papercss/dist/paper.min.css";
-import { defineComponent, ref, onMounted, reactive } from "vue";
-import { getData } from "../../api/api";
+import { defineComponent, onMounted } from "vue";
 
 export default defineComponent({
-  setup: async () => {
+  props: {
+    one: {
+      required: true,
+      type: Object,
+    },
+  },
+  emits: ["handle-next"],
+  setup: (props, context) => {
     onMounted(() => {});
-    let data: any = await getData(4, "", {});
-    let oneInfo = reactive({ newsList: (data as any).data.newslist[0] });
-
+    // console.log("one----", props.one);
     function handleNextOne() {
-      getData(4, "", {}).then((res: any) => {
-        oneInfo.newsList = res.data.newslist[0];
-      });
+      context.emit("handle-next", "one");
     }
-    return { oneInfo, handleNextOne };
+    return { handleNextOne };
   },
 });
 </script>

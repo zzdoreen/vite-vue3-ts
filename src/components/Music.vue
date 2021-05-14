@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div v-loading="!music.value.picurl.length" class="bg">
     <div
       v-loading="!music.value.picurl.length"
       class="bg-img"
