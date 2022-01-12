@@ -1,0 +1,1 @@
+import{d as a,a5 as s,a6 as c,o as e,c as o,a7 as t}from"./vendor.b9322a87.js";var d=a({setup:async()=>{}});const n=t();s("data-v-494c3e50");const r={class:"container"};c();const v=n(((a,s,c,t,d,n)=>(e(),o("div",r))));d.render=v,d.__scopeId="data-v-494c3e50";export default d;

@@ -1,6 +1,7 @@
 <template>
   <div ref="div_box">
-    <build v-show="count === 0" />
+    <gashapon v-show="count === 0" />
+    <!-- <build v-show="count === 0" /> -->
     <light v-show="count === 1" />
     <h1>暂未开发...</h1>
     <el-button
@@ -19,6 +20,7 @@
 </template>
 <script lang='ts'>
 import Build from "./Illustration/Build.vue";
+import Gashapon from "./Illustration/Gashapon.vue";
 import Light from "./Illustration/Light.vue";
 import { defineComponent, ref } from "vue";
 import { ElMessageBox } from "element-plus";
@@ -27,6 +29,7 @@ export default defineComponent({
   components: {
     Build,
     Light,
+    Gashapon,
   },
   setup: () => {
     let count = ref(0);

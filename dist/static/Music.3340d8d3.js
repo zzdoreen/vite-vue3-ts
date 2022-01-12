@@ -1,0 +1,1 @@
+import{d as a,j as s,a5 as o,a6 as t,o as d,c,a7 as e}from"./vendor.b9322a87.js";var r=a({setup:async()=>(s((()=>{})),{})});const n=e();o("data-v-76402f90");const v={class:"bg"};t();const f=n(((a,s,o,t,e,r)=>(d(),c("div",v))));r.render=f,r.__scopeId="data-v-76402f90";export default r;
