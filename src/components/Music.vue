@@ -29,7 +29,7 @@
         <p>{{ music.value.name }}</p>
         <p>歌手：{{ music.value.artistsname }}</p>
       </div>
-      <p class="lyric">{{ msg ? msg : " " }}</p>
+      <!-- <p class="lyric">{{ msg ? msg : " " }}</p> -->
       <div class="icon">
         <i
           :class="[
@@ -58,16 +58,16 @@ export default defineComponent({
 
     let audio = ref();
     let isMusicPlay = ref(false);
-    let msg = obj.data && obj.data[0].text ? ref(obj.data[0].text) : ref(" ");
+    // let msg = obj.data && obj.data[0].text ? ref(obj.data[0].text) : ref(" ");
 
     function handleMusicTimeChange() {
-      if (audio.value.currentTime >= obj.data[index.value + 1].time) {
-        index.value++;
-      }
-      msg.value = obj.data[index.value].text;
-      if (audio.value.ended) {
-        handleChangeMusic();
-      }
+      // if (audio.value.currentTime >= obj.data[index.value + 1].time) {
+      //   index.value++;
+      // }
+      // // msg.value = obj.data[index.value].text;
+      // if (audio.value.ended) {
+      //   handleChangeMusic();
+      // }
     }
 
     function handleMusicPlay() {
@@ -87,7 +87,7 @@ export default defineComponent({
     }
 
     return {
-      msg,
+     // msg,
       isMusicPlay,
       index,
       obj,
