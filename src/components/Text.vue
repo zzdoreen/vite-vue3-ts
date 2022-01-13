@@ -19,14 +19,14 @@
 <script lang='ts'>
 import { defineComponent } from "@vue/runtime-core";
 import { ref } from "vue";
-import { commonRequest } from "../api/http";
+// import { commonRequest } from "../api/http";
 
 export default defineComponent({
   setup: () => {
     let showData = ref("e");
 
     function handleRequest(api: string) {
-      commonRequest(api, {}).then((res) => (showData.value = res));
+      // commonRequest(api, {}).then((res) => (showData.value = res));
     }
     return { showData, handleRequest };
   },

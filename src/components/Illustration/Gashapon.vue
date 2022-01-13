@@ -20,13 +20,16 @@
           ref="gift"
           @click="handleOpenGifts"
         ></div>
+        <div class="open-ball" v-show="showOpenBallFlag">
+          <h2 class="font">{{msg}}</h2>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang='ts'>
 import { defineComponent, onMounted } from "@vue/runtime-core";
-import { Ref, ref } from "vue";
+import { reactive, Ref, ref } from "vue";
 
 export default defineComponent({
   //   left: 0 - 280px;
@@ -37,6 +40,18 @@ export default defineComponent({
     let ball: Ref<null> = ref(null);
     let gift: Ref<null> = ref(null);
     let showFlag: Ref<boolean> = ref(false);
+    let showOpenBallFlag: Ref<boolean> = ref(false);
+    let str = [
+      "谢谢惠顾",
+      "再来一次",
+      "还没有想好",
+      "休息一小时",
+      "A赏",
+      "B赏",
+      "C赏",
+      "D赏",
+    ];
+    let msg: Ref<string> = ref("");
 
     onMounted(() => {
       for (let i = 0; i < 100; i++) {
@@ -87,7 +102,7 @@ export default defineComponent({
           let str = aBalls[i].getAttribute("style");
           aBalls[i].setAttribute("style", str + "animation: none;");
         }
-               
+
         (gift.value as any).setAttribute(
           "style",
           "animation: ballOut 1s ease-out normal;"
@@ -97,10 +112,23 @@ export default defineComponent({
     }
 
     function handleOpenGifts() {
-      console.log("open");
+      showOpenBallFlag.value = true;
+      msg.value = str[parseInt(Math.random() * 8 + "")];
+      setTimeout(() => {
+        showOpenBallFlag.value = false;
+        showFlag.value = false;
+      }, 2000);
     }
 
-    return { handleStartEnd, handleOpenGifts, showFlag, gift, ball };
+    return {
+      handleStartEnd,
+      handleOpenGifts,
+      showFlag,
+      msg,
+      showOpenBallFlag,
+      gift,
+      ball,
+    };
   },
 });
 </script>
@@ -172,8 +200,6 @@ export default defineComponent({
   left: 0;
   background: radial-gradient(circle at 20px 20px, #fcfcfc, #b993d6);
 }
-//   left: 0 - 280px;
-//   bottom:150px - -50px;
 
 @keyframes ballMove {
   0% {
@@ -242,6 +268,54 @@ export default defineComponent({
       margin-top: 50px;
     }
   }
+  .open-ball {
+    top: -300px;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #fcfcfc;
+    border-radius: 50%;
+    box-shadow: 0 0 50px 50px #fcfcfc;
+    left: calc(50% - 100px);
+    transform: rotate(-30deg);
+    z-index: inherit;
+    animation: ballOpen 0.3s ease-in normal;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 160px;
+      height: 160px;
+      clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+      background: radial-gradient(circle at 0 0, white, #b993d6);
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: rotate(120deg);
+    }
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 160px;
+      height: 160px;
+      clip-path: polygon(0 50%, 0 100%, 100% 100%, 100% 50%);
+      background: radial-gradient(circle at 0 0, white, #b993d6);
+      border-radius: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      transform: rotate(-30deg);
+    }
+    .font {
+      transform: rotate(30deg);
+      width: 200px;
+      position: absolute;
+      z-index: 100;
+      left: calc(50% - 100px);
+      top: 30%;
+      animation: ballOpen 0.5s ease-in 0.2s normal;
+    }
+  }
 }
 
 @keyframes _2dmove {
@@ -258,6 +332,16 @@ export default defineComponent({
   to {
     transform: scale(1);
     margin-top: 50px;
+  }
+}
+
+@keyframes ballOpen {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
   }
 }
 </style>

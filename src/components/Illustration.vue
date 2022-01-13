@@ -1,8 +1,8 @@
 <template>
   <div ref="div_box">
     <gashapon v-show="count === 0" />
-    <!-- <build v-show="count === 0" /> -->
-    <light v-show="count === 1" />
+    <build v-show="count === 1" />
+    <light v-show="count === 2" />
     <h1>暂未开发...</h1>
     <el-button
       round
@@ -34,7 +34,7 @@ export default defineComponent({
   setup: () => {
     let count = ref(0);
     function handleNextClick() {
-      if (count.value < 2) {
+      if (count.value < 3) {
         count.value++;
       } else {
         ElMessageBox.alert("别慌，等我在肝会儿", "提示");

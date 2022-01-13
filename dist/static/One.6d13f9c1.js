@@ -1,1 +1,0 @@
-/* empty css                  */import{d as a,j as s,a5 as d,a6 as o,o as t,c as e,a7 as n}from"./vendor.b9322a87.js";var r=a({setup:async()=>{s((()=>{}))}});const c=n();d("data-v-0fdd8896");const p={class:"contain"};o();const i=c(((a,s,d,o,n,r)=>(t(),e("div",p))));r.render=i,r.__scopeId="data-v-0fdd8896";export default r;
