@@ -61,13 +61,14 @@ export default defineComponent({
     // let msg = obj.data && obj.data[0].text ? ref(obj.data[0].text) : ref(" ");
 
     function handleMusicTimeChange() {
+      // console.log(audio.value.currentTime)
       // if (audio.value.currentTime >= obj.data[index.value + 1].time) {
       //   index.value++;
       // }
       // // msg.value = obj.data[index.value].text;
-      // if (audio.value.ended) {
-      //   handleChangeMusic();
-      // }
+      if (audio.value.ended) {
+        handleChangeMusic();
+      }
     }
 
     function handleMusicPlay() {
