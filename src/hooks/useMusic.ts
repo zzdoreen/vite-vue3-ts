@@ -1,11 +1,11 @@
 
 import { ref, reactive } from 'vue'
 import { getData } from "../api/api";
-import { toSeconds } from '../utils/time'
+// import { toSeconds } from '../utils/time'
 export async function useMusic() {
     let datas: any = await getData(2, "", {});
     let music = reactive({ value: datas.data.data });
-    console.log('datas', datas)
+
     let music_id = ref(music.value.url.split("?id=")[1]);
     // let lyric: any = await getData(3, "", {
     //     type: "lyric",
